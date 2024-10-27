@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:polysleep/data/sleep_patterns.dart';
-import 'package:polysleep/widgets/cycle_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:polysleep/bloc/nav_bloc.dart';
+import 'package:polysleep/pages/home.dart';
  import 'package:shadcn_ui/shadcn_ui.dart';
 
 void main() {
@@ -12,45 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ShadApp(
-      title: 'Polysleep',
-      home: MyHomePage(title: 'Polysleep'),
-    );
-  }
-}
-
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
- 
-    return Scaffold(
-      appBar: AppBar(
- 
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text(widget.title),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<NavBloc>(create: (context) => NavBloc()),
+      ],
+      child: const ShadApp(
+        title: 'Polysleep',
+        home: HomePage(title: 'Polysleep'),
       ),
-      body: Center(
-
-        child: ListView.builder(
-          itemCount: patterns.length,
-          itemBuilder: (context, index) {
-          var pattern = patterns[index];
-          return CycleCard(
-            pattern: pattern,
-          );
-        }),
-      )
     );
   }
 }
+

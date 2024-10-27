@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:polysleep/nav/bottom_nav.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 class CyclesPage extends StatelessWidget {
   final List<String> cycles = [
@@ -13,22 +15,20 @@ class CyclesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cycles'),
+        title: const Text('Cycles'),
+     
       ),
       body: ListView.builder(
         itemCount: cycles.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(cycles[index]),
+          return const ListTile(
+            title: Text("Core Sleep", style: TextStyle(fontWeight: FontWeight.bold)),
+            subtitle: Text('23:00 - 05:00'),
+            trailing: Icon(Icons.delete),
           );
         },
       ),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: CyclesPage(),
-  ));
 }

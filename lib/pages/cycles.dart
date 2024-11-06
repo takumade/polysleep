@@ -22,9 +22,10 @@ class CyclesPage extends StatelessWidget {
         itemCount: cycles.length,
         itemBuilder: (context, index) {
           return const ListTile(
+            leading: Icon(Icons.bedtime),
             title: Text("Core Sleep", style: TextStyle(fontWeight: FontWeight.bold)),
             subtitle: Text('23:00 - 05:00'),
-            trailing: Icon(Icons.delete),
+            trailing: Icon(Icons.edit_notifications_outlined),
           );
         },
       ),

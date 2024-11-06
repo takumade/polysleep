@@ -23,18 +23,22 @@ class CyclesPage extends StatelessWidget {
         child: Column(
           children: [
           ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: cycles.length,
             itemBuilder: (context, index) {
-              return const ListTile(
-                leading: Icon(Icons.bedtime),
-                title: Text("Core Sleep", style: TextStyle(fontWeight: FontWeight.bold)),
-                subtitle: Text('23:00 - 05:00'),
-                trailing: Icon(Icons.edit_notifications_outlined),
+              return const Card(
+                elevation: 1,
+                child: ListTile(
+                  leading: Icon(Icons.bedtime),
+                  title: Text("Core Sleep", style: TextStyle(fontWeight: FontWeight.bold)),
+                  subtitle: Text('23:00 - 05:00'),
+                  trailing: Icon(Icons.edit_notifications_outlined),
+                ),
               );
             },
           ),
+          SizedBox(height: 20),
           ShadButton.destructive(
   child: const Text('Clear Cycles'),
   onPressed: () {},

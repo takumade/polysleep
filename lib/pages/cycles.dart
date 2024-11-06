@@ -27,9 +27,15 @@ class CyclesPage extends StatelessWidget {
             shrinkWrap: true,
             itemCount: cycles.length,
             itemBuilder: (context, index) {
-              return const Card(
+              return Card(
+                 shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(15),
+    side: BorderSide(
+      color: Colors.grey.withOpacity(0.2),
+    ),
+  ),
                 elevation: 1,
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(Icons.bedtime),
                   title: Text("Core Sleep", style: TextStyle(fontWeight: FontWeight.bold)),
                   subtitle: Text('23:00 - 05:00'),
@@ -38,7 +44,7 @@ class CyclesPage extends StatelessWidget {
               );
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ShadButton.destructive(
   child: const Text('Clear Cycles'),
   onPressed: () {},
